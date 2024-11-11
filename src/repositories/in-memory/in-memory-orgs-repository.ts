@@ -1,6 +1,7 @@
 import { Org, type Prisma } from '@prisma/client'
-import { OrgsRepository } from '../orgs-repository'
+import { OrgsRepository, type FindManyNearbyParams } from '../orgs-repository'
 import { Decimal } from '@prisma/client/runtime/library'
+import { getDistanceBetweenCoordinates } from 'src/utils/get-distance-between-coordinates'
 
 export class InMemoryOrgsRepository implements OrgsRepository {
   public orgs: Org[] = []
@@ -23,6 +24,23 @@ export class InMemoryOrgsRepository implements OrgsRepository {
     }
 
     return org
+  }
+
+  async findManyNearby(params: FindManyNearbyParams): Promise<Org[] | null> {
+    return this.orgs.filter((org) => {
+      const distance = getDistanceBetweenCoordinates(
+        {
+          latitude: params.latitude,
+          longitude: params.longitude,
+        },
+        {
+          latitude: org.latitude.toNumber(),
+          longitude: org.longitude.toNumber(),
+        },
+      )
+
+      return distance < 10
+    })
   }
 
   async create(data: Prisma.OrgCreateInput): Promise<Org> {
