@@ -8,8 +8,8 @@ export function makePet(
   return {
     name: faker.person.firstName(),
     about: faker.lorem.paragraph(),
-    age: faker.number.int().toString(),
-    energy_level: faker.number.int().toString(),
+    age: faker.number.int({ max: 5 }).toString(),
+    energy_level: faker.number.int({ max: 20 }).toString(),
     environment: faker.lorem.word(),
     size: faker.lorem.word(),
     org_id: randomUUID(),
