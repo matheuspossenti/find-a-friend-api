@@ -1,5 +1,7 @@
-import { app } from './app'
+import 'reflect-metadata'
+import './shared/container'
 import { env } from './env'
+import { app } from './app'
 
 app
   .listen({

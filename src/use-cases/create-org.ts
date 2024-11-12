@@ -3,6 +3,7 @@ import type { OrgsRepository } from 'src/repositories/orgs-repository'
 import { OrgAlreadyExists } from './errors/org-already-exists'
 import { hash } from 'bcryptjs'
 import type { Decimal, DecimalJsLike } from '@prisma/client/runtime/library'
+import { inject, injectable } from 'tsyringe'
 
 interface CreateOrgRequest {
   name: string
@@ -23,8 +24,11 @@ interface CreateOrgResponse {
   org: Org
 }
 
-export class CreateOrg {
-  constructor(private orgsRepository: OrgsRepository) {}
+@injectable()
+export class CreateOrgUseCase {
+  constructor(
+    @inject('OrgsRepository') private orgsRepository: OrgsRepository,
+  ) {}
 
   async execute({
     name,

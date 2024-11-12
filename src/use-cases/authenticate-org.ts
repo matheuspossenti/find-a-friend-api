@@ -24,10 +24,6 @@ export class AuthenticateOrg {
 
     if (!org) throw new OrgNotFoundError()
 
-    console.log('org', org)
-    console.log('password', password)
-    console.log('org.password', org.password)
-
     const passwordMatch = await compare(password, org.password)
 
     if (!passwordMatch) throw new InvalidPasswordError()

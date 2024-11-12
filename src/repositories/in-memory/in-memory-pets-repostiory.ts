@@ -7,7 +7,7 @@ export class InMemoryPetsRepository implements PetsRepository {
 
   constructor(private orgsRepository: InMemoryOrgsRepository) {}
 
-  async findById(id: string): Promise<Pet | null> {
+  async findById(id: string) {
     const pet = this.pets.find((pet) => pet.id === id)
 
     if (!pet) {
@@ -17,7 +17,7 @@ export class InMemoryPetsRepository implements PetsRepository {
     return pet
   }
 
-  async findAll(params: FindAllParams): Promise<Pet[]> {
+  async findAll(params: FindAllParams) {
     const orgsByCity = this.orgsRepository.orgs.filter(
       (org) => org.city === params.city,
     )
@@ -36,7 +36,7 @@ export class InMemoryPetsRepository implements PetsRepository {
     return pets
   }
 
-  async create(data: Prisma.PetUncheckedCreateInput): Promise<Pet> {
+  async create(data: Prisma.PetUncheckedCreateInput) {
     const pet = {
       id: crypto.randomUUID(),
       ...data,
