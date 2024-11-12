@@ -7,8 +7,8 @@ export default defineConfig({
   test: {
     globals: true,
     environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
-    include: ['./**/**/*.spec.ts'],
-    exclude: ['**/*.e2e-spec.ts'],
+    include: ['./**/**/*.e2e-spec.ts'],
+    setupFiles: './test/vitest.setup.ts',
     dir: 'src',
   },
 })

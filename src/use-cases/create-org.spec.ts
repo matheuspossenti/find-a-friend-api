@@ -1,18 +1,18 @@
 import { InMemoryOrgsRepository } from 'src/repositories/in-memory/in-memory-orgs-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { makeOrg } from 'test/factories/make-org'
-import { CreateOrg } from './create-org'
+import { CreateOrgUseCase } from './create-org'
 import { OrgAlreadyExists } from './errors/org-already-exists'
 
 let inMemoryOrgsRepository: InMemoryOrgsRepository
-let sut: CreateOrg
+let sut: CreateOrgUseCase
 
 beforeEach(() => {
   inMemoryOrgsRepository = new InMemoryOrgsRepository()
-  sut = new CreateOrg(inMemoryOrgsRepository)
+  sut = new CreateOrgUseCase(inMemoryOrgsRepository)
 })
 
-describe('Create Pet', () => {
+describe('Create Org', () => {
   it('should be able to create a org', async () => {
     const { org } = await sut.execute(
       makeOrg({

@@ -1,6 +1,6 @@
+import { container } from 'tsyringe'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 import { CreateOrgUseCase } from 'src/use-cases/create-org'
-import { container } from 'tsyringe'
 import { z } from 'zod'
 
 export async function create(request: FastifyRequest, reply: FastifyReply) {

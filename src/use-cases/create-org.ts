@@ -1,9 +1,9 @@
+import { inject, injectable } from 'tsyringe'
 import type { Org } from '@prisma/client'
 import type { OrgsRepository } from 'src/repositories/orgs-repository'
 import { OrgAlreadyExists } from './errors/org-already-exists'
 import { hash } from 'bcryptjs'
 import type { Decimal, DecimalJsLike } from '@prisma/client/runtime/library'
-import { inject, injectable } from 'tsyringe'
 
 interface CreateOrgRequest {
   name: string

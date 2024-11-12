@@ -4,10 +4,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node build/server.js",
+    "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
+    "test:install-prisma-environment": "npm link vitest-environment-prisma",
     "dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "vitest run --config ./vite.config.mts",
+    "test:watch": "vitest",
+    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
+    "test:e2e": "vitest run --config ./vite.config.e2e.mts -- poolOptions.threads.singleThread"
   },
   "keywords": [],
   "author": "",
@@ -21,19 +25,19 @@
     "eslint": "8.57.1",
     "tsup": "8.3.5",
     "tsx": "4.19.2",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vite-tsconfig-paths": "5.1.0",
+    "vitest": "2.1.4"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
-    "bcrypt": "5.1.1",
     "bcryptjs": "2.4.3",
     "dotenv": "16.4.5",
     "fastify": "5.1.0",
+    "npm-run-all": "4.1.5",
     "prisma": "5.22.0",
     "reflect-metadata": "0.2.2",
     "tsyringe": "4.8.0",
-    "vite-tsconfig-paths": "5.1.0",
-    "vitest": "2.1.4",
     "zod": "3.23.8"
   }
 }

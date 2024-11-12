@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+import './shared/container'
 import fastify from 'fastify'
 import { orgsRoutes } from './http/controller/org/routes'
 
