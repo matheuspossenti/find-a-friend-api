@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { app } from 'src/app'
 import { afterAll, beforeAll } from 'vitest'
 

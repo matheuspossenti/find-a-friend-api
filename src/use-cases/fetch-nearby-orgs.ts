@@ -1,6 +1,7 @@
 import type { Org } from '@prisma/client'
 import type { OrgsRepository } from 'src/repositories/orgs-repository'
 import { OrgNotFoundError } from './errors/org-not-found'
+import { inject, injectable } from 'tsyringe'
 
 interface FetchNearbyOrgsRequest {
   latitude: number
@@ -11,8 +12,11 @@ interface FetchNearbyOrgsResponse {
   orgs: Org[]
 }
 
+@injectable()
 export class FetchNearbyOrgs {
-  constructor(private orgsRepository: OrgsRepository) {}
+  constructor(
+    @inject('OrgsRepository') private orgsRepository: OrgsRepository,
+  ) {}
 
   async execute({
     latitude,

@@ -3,8 +3,6 @@ import { OrgsRepository, type FindManyNearbyParams } from '../orgs-repository'
 import { prisma } from 'src/lib/prisma'
 
 export class PrismaOrgsRepository implements OrgsRepository {
-  public orgs: Org[] = []
-
   async findById(id: string) {
     const org = await prisma.org.findUnique({
       where: {

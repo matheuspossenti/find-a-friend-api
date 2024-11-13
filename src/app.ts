@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import './shared/container'
 import fastify from 'fastify'
-import { orgsRoutes } from './http/controller/org/routes'
+import { orgsRoutes } from './http/controllers/org/routes'
 
 export const app = fastify()
 
