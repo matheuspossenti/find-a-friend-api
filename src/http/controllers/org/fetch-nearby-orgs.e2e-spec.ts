@@ -21,8 +21,6 @@ describe('Fetch Nearby Org', () => {
       },
     })
 
-    console.log(response.json())
-
     expect(response.statusCode).toBe(201)
   })
 })

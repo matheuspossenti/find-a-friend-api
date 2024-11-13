@@ -6,6 +6,7 @@ export function makePet(
   override?: Partial<Prisma.PetUncheckedCreateInput>,
 ): Prisma.PetUncheckedCreateInput {
   return {
+    id: randomUUID(),
     name: faker.person.firstName(),
     about: faker.lorem.paragraph(),
     age: faker.number.int({ max: 5 }).toString(),

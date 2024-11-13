@@ -1,10 +1,12 @@
 import type { Prisma } from '@prisma/client'
 import { faker } from '@faker-js/faker'
+import { randomUUID } from 'crypto'
 
 export function makeOrg(
   override?: Partial<Prisma.OrgCreateInput>,
 ): Prisma.OrgCreateInput {
   return {
+    id: randomUUID(),
     name: faker.company.name(),
     author_name: faker.person.firstName(),
     email: faker.internet.email(),

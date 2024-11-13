@@ -4,6 +4,7 @@ import type { OrgsRepository } from 'src/repositories/orgs-repository'
 import { OrgAlreadyExists } from './errors/org-already-exists'
 import { hash } from 'bcryptjs'
 import type { Decimal, DecimalJsLike } from '@prisma/client/runtime/library'
+import { randomUUID } from 'crypto'
 
 interface CreateOrgRequest {
   name: string
@@ -51,6 +52,7 @@ export class CreateOrgUseCase {
     const password_hash = await hash(password, 8)
 
     const org = await this.orgsRepository.create({
+      id: randomUUID(),
       name,
       author_name,
       email,

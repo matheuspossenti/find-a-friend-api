@@ -1,5 +1,5 @@
 import { InMemoryPetsRepository } from 'src/repositories/in-memory/in-memory-pets-repostiory'
-import { GetPets } from './get-pets'
+import { GetPetsUseCase } from './get-pets'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryOrgsRepository } from 'src/repositories/in-memory/in-memory-orgs-repository'
 import { makeOrg } from 'test/factories/make-org'
@@ -8,13 +8,13 @@ import { PetNotFoundError } from './errors/pet-not-found'
 
 let inMemoryOrgsRepository: InMemoryOrgsRepository
 let inMemoryPetsRepository: InMemoryPetsRepository
-let sut: GetPets
+let sut: GetPetsUseCase
 
 describe('Get Pets', () => {
   beforeEach(() => {
     inMemoryOrgsRepository = new InMemoryOrgsRepository()
     inMemoryPetsRepository = new InMemoryPetsRepository(inMemoryOrgsRepository)
-    sut = new GetPets(inMemoryPetsRepository)
+    sut = new GetPetsUseCase(inMemoryPetsRepository)
   })
 
   it('should be able to get pets', async () => {

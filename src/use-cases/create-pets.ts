@@ -2,6 +2,8 @@ import type { Pet } from '@prisma/client'
 import type { OrgsRepository } from 'src/repositories/orgs-repository'
 import type { PetsRepository } from 'src/repositories/pets-repository'
 import { OrgNotFoundError } from './errors/org-not-found'
+import { inject, injectable } from 'tsyringe'
+import { randomUUID } from 'crypto'
 
 interface CreatePetRequest {
   name: string
@@ -17,10 +19,11 @@ interface CreatePetResponse {
   pet: Pet
 }
 
-export class CreatePetsUseCase {
+@injectable()
+export class CreatePetUseCase {
   constructor(
-    private petsRepository: PetsRepository,
-    private orgsRepository: OrgsRepository,
+    @inject('PetsRepository') private petsRepository: PetsRepository,
+    @inject('OrgsRepository') private orgsRepository: OrgsRepository,
   ) {}
 
   async execute({
@@ -39,6 +42,7 @@ export class CreatePetsUseCase {
     }
 
     const pet = await this.petsRepository.create({
+      id: randomUUID(),
       name,
       about,
       age,

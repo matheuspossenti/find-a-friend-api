@@ -1,16 +1,16 @@
 import { InMemoryOrgsRepository } from 'src/repositories/in-memory/in-memory-orgs-repository'
-import { AuthenticateOrg } from './authenticate-org'
+import { AuthenticateOrgUseCase } from './authenticate-org'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { makeOrg } from 'test/factories/make-org'
 import { hash } from 'bcryptjs'
 
 let inMemoryOrgsRepository: InMemoryOrgsRepository
-let sut: AuthenticateOrg
+let sut: AuthenticateOrgUseCase
 
 describe('Authenticate Org', () => {
   beforeEach(() => {
     inMemoryOrgsRepository = new InMemoryOrgsRepository()
-    sut = new AuthenticateOrg(inMemoryOrgsRepository)
+    sut = new AuthenticateOrgUseCase(inMemoryOrgsRepository)
   })
 
   it('should authenticate an org', async () => {

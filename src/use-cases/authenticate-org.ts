@@ -3,6 +3,7 @@ import { OrgsRepository } from 'src/repositories/orgs-repository'
 import { OrgNotFoundError } from './errors/org-not-found'
 import { compare } from 'bcryptjs'
 import { InvalidPasswordError } from './errors/invalid-password'
+import { inject, injectable } from 'tsyringe'
 
 interface AuthenticateOrgRequest {
   email: string
@@ -13,8 +14,11 @@ interface AuthenticateOrgResponse {
   org: Org
 }
 
+@injectable()
 export class AuthenticateOrgUseCase {
-  constructor(private orgsRepository: OrgsRepository) {}
+  constructor(
+    @inject('OrgsRepository') private orgsRepository: OrgsRepository,
+  ) {}
 
   async execute({
     email,

@@ -1,15 +1,15 @@
 import { InMemoryOrgsRepository } from 'src/repositories/in-memory/in-memory-orgs-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { makeOrg } from 'test/factories/make-org'
-import { FetchNearbyOrgs } from './fetch-nearby-orgs'
+import { FetchNearbyOrgsUseCase } from './fetch-nearby-orgs'
 
 let inMemoryOrgsRepository: InMemoryOrgsRepository
-let sut: FetchNearbyOrgs
+let sut: FetchNearbyOrgsUseCase
 
 describe('Search Pet', () => {
   beforeEach(() => {
     inMemoryOrgsRepository = new InMemoryOrgsRepository()
-    sut = new FetchNearbyOrgs(inMemoryOrgsRepository)
+    sut = new FetchNearbyOrgsUseCase(inMemoryOrgsRepository)
   })
 
   it('should be able to fetch nearby orgs', async () => {

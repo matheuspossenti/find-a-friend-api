@@ -1,19 +1,19 @@
 import { InMemoryOrgsRepository } from 'src/repositories/in-memory/in-memory-orgs-repository'
-import { CreatePets } from './create-pets'
 import { InMemoryPetsRepository } from 'src/repositories/in-memory/in-memory-pets-repostiory'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { makeOrg } from 'test/factories/make-org'
 import { makePet } from 'test/factories/make-pet'
 import { OrgNotFoundError } from './errors/org-not-found'
+import { CreatePetUseCase } from './create-pets'
 
 let inMemoryOrgsRepository: InMemoryOrgsRepository
 let inMemoryPetsRepository: InMemoryPetsRepository
-let sut: CreatePets
+let sut: CreatePetUseCase
 
 beforeEach(() => {
   inMemoryOrgsRepository = new InMemoryOrgsRepository()
   inMemoryPetsRepository = new InMemoryPetsRepository(inMemoryOrgsRepository)
-  sut = new CreatePets(inMemoryPetsRepository, inMemoryOrgsRepository)
+  sut = new CreatePetUseCase(inMemoryPetsRepository, inMemoryOrgsRepository)
 })
 
 describe('Create Org', () => {
