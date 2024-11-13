@@ -1,7 +1,7 @@
+import 'dotenv/config'
 import { randomUUID } from 'node:crypto'
 import { Environment } from 'vitest/environments'
 import { execSync } from 'node:child_process'
-import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 
 // postgresql://docker:docker@localhost:5432/apisolid?schema=public
