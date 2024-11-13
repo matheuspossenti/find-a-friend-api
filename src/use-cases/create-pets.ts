@@ -17,7 +17,7 @@ interface CreatePetResponse {
   pet: Pet
 }
 
-export class CreatePets {
+export class CreatePetsUseCase {
   constructor(
     private petsRepository: PetsRepository,
     private orgsRepository: OrgsRepository,

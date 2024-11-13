@@ -13,7 +13,7 @@ interface AuthenticateOrgResponse {
   org: Org
 }
 
-export class AuthenticateOrg {
+export class AuthenticateOrgUseCase {
   constructor(private orgsRepository: OrgsRepository) {}
 
   async execute({

@@ -13,7 +13,7 @@ interface FetchNearbyOrgsResponse {
 }
 
 @injectable()
-export class FetchNearbyOrgs {
+export class FetchNearbyOrgsUseCase {
   constructor(
     @inject('OrgsRepository') private orgsRepository: OrgsRepository,
   ) {}
