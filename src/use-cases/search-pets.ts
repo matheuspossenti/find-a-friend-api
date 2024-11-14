@@ -1,5 +1,6 @@
 import type { Pet } from '@prisma/client'
 import type { PetsRepository } from 'src/repositories/pets-repository'
+import { inject, injectable } from 'tsyringe'
 
 interface SearchPetRequest {
   city: string
@@ -13,8 +14,11 @@ interface SearchPetResponse {
   pets: Pet[]
 }
 
+@injectable()
 export class SearchPetUseCase {
-  constructor(private petsRepository: PetsRepository) {}
+  constructor(
+    @inject('PetsRepository') private petsRepository: PetsRepository,
+  ) {}
 
   async execute({
     city,

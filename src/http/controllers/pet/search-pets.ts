@@ -3,8 +3,8 @@ import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 import { SearchPetUseCase } from 'src/use-cases/search-pets'
 
-export async function getPet(request: FastifyRequest, reply: FastifyReply) {
-  const getPetParamsSchema = z.object({
+export async function searchPets(request: FastifyRequest, reply: FastifyReply) {
+  const searchPetsParamsSchema = z.object({
     city: z.string(),
     age: z.string().optional(),
     size: z.string().optional(),
@@ -13,7 +13,7 @@ export async function getPet(request: FastifyRequest, reply: FastifyReply) {
   })
 
   const { city, age, size, energy_level, environment } =
-    getPetParamsSchema.parse(request.query)
+    searchPetsParamsSchema.parse(request.query)
 
   const searchPetsUseCase = container.resolve(SearchPetUseCase)
 

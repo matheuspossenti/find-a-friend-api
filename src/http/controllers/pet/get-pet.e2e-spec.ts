@@ -4,7 +4,7 @@ import { makePet } from 'test/factories/make-pet'
 import { describe, expect, it } from 'vitest'
 
 describe('Get Pet', () => {
-  it.only('should be able to get an pet', async () => {
+  it('should be able to get an pet', async () => {
     const org = await app.inject({
       method: 'POST',
       url: '/orgs',

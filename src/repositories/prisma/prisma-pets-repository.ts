@@ -11,10 +11,18 @@ export class PrismaPetsRepository implements PetsRepository {
     return pet
   }
 
-  findAll(params: FindAllParams) {
-    const pets = prisma.pet.findMany({
+  async findAll(params: FindAllParams) {
+    const pets = await prisma.pet.findMany({
       where: {
-        ...params,
+        age: params.age,
+        size: params.size,
+        energy_level: params.energy_level,
+        org: {
+          city: {
+            contains: params.city,
+            mode: 'insensitive',
+          },
+        },
       },
     })
 
