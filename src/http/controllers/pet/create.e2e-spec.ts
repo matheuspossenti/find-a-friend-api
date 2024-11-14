@@ -11,21 +11,15 @@ describe('Create Pet', () => {
       payload: makeOrg(),
     })
 
-    console.log(org)
-
     const pet = makePet({
       org_id: org.json().org.id,
     })
-
-    console.log(pet)
 
     const response = await app.inject({
       method: 'POST',
       url: '/pets',
       payload: pet,
     })
-
-    console.log(response.json())
 
     expect(response.statusCode).toBe(201)
   })
