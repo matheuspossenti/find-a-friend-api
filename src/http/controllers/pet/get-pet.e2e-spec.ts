@@ -19,16 +19,10 @@ describe('Get Pet', () => {
       }),
     })
 
-    console.log(pet.json())
-
-    console.log(pet.json().pet.id)
-
     const response = await app.inject({
       method: 'GET',
       url: `/orgs/pets/${pet.json().pet.id}`,
     })
-
-    console.log(response.json())
 
     expect(response.statusCode).toBe(201)
   })
