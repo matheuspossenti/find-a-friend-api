@@ -17,7 +17,7 @@ describe('Create Pet', () => {
 
     const response = await app.inject({
       method: 'POST',
-      url: '/pets',
+      url: '/orgs/pets',
       payload: pet,
     })
 

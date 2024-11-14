@@ -12,9 +12,9 @@ interface GetPetResponse {
 }
 
 @injectable()
-export class GetPetsUseCase {
+export class GetPetUseCase {
   constructor(
-    @inject('OrgsRepository') private petsRepository: PetsRepository,
+    @inject('PetsRepository') private petsRepository: PetsRepository,
   ) {}
 
   async execute({ id }: GetPetRequest): Promise<GetPetResponse> {
